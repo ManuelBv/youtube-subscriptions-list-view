@@ -1,5 +1,4 @@
-/* YouTube List View Styles */
-/* NOTE: Selectors will be updated after analyzing actual YouTube DOM structure */
+/* YouTube List View Styles - Mimics old YouTube list style */
 
 /* Toggle button styles */
 .yt-list-view-toggle {
@@ -16,6 +15,7 @@
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  vertical-align: middle;
 }
 
 .yt-list-view-toggle:hover {
@@ -28,60 +28,111 @@
   border-color: #3ea6ff;
 }
 
-/* List view layout - PLACEHOLDER SELECTORS */
-/* These will be updated after DOM analysis */
+/* ===== LIST VIEW LAYOUT ===== */
 
-.yt-list-view-enabled #contents.ytd-rich-grid-renderer {
-  /* Change grid to list layout */
+/* Change grid container to vertical stack */
+.yt-list-view-enabled ytd-rich-grid-renderer #contents {
   display: flex !important;
   flex-direction: column !important;
-  gap: 8px !important;
+  gap: 0 !important;
 }
 
+/* Make each video item full width */
 .yt-list-view-enabled ytd-rich-item-renderer {
-  /* Make items full width, horizontal layout */
   width: 100% !important;
   max-width: 100% !important;
+  margin: 0 !important;
 }
 
-.yt-list-view-enabled ytd-rich-item-renderer #content {
-  /* Horizontal flex layout */
+/* Change lockup from vertical to horizontal layout */
+.yt-list-view-enabled .yt-lockup-view-model.yt-lockup-view-model--vertical {
   display: flex !important;
   flex-direction: row !important;
-  align-items: center !important;
+  align-items: flex-start !important;
   gap: 12px !important;
-  padding: 8px 0 !important;
+  padding: 12px 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
-/* Hide main thumbnail in list view */
-.yt-list-view-enabled ytd-thumbnail.ytd-rich-grid-media {
+/* HIDE the large thumbnail image */
+.yt-list-view-enabled a.yt-lockup-view-model__content-image {
   display: none !important;
 }
 
-/* Show and style avatar/channel thumbnail */
-.yt-list-view-enabled ytd-channel-name #avatar,
-.yt-list-view-enabled yt-img-shadow#avatar {
-  width: 48px !important;
-  height: 48px !important;
+/* Style the metadata container (avatar + text) */
+.yt-list-view-enabled .yt-lockup-view-model__metadata {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+/* Keep avatar visible and sized appropriately */
+.yt-list-view-enabled .yt-lockup-metadata-view-model__avatar {
   flex-shrink: 0 !important;
 }
 
-/* Style video title */
-.yt-list-view-enabled #video-title {
-  font-size: 14px !important;
-  line-height: 1.4 !important;
-  max-height: none !important;
-  -webkit-line-clamp: 2 !important;
+.yt-list-view-enabled yt-avatar-shape,
+.yt-list-view-enabled .yt-spec-avatar-shape {
+  width: 48px !important;
+  height: 48px !important;
 }
 
-/* Style metadata (channel name, views, date) */
-.yt-list-view-enabled #metadata-line {
+.yt-list-view-enabled .yt-spec-avatar-shape__image {
+  width: 48px !important;
+  height: 48px !important;
+}
+
+/* Text container (title + metadata) */
+.yt-list-view-enabled .yt-lockup-metadata-view-model__text-container {
+  flex: 1 !important;
+  min-width: 0 !important;
+}
+
+/* Style video title */
+.yt-list-view-enabled .yt-lockup-metadata-view-model__title {
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  margin-bottom: 4px !important;
+  display: block !important;
+}
+
+.yt-list-view-enabled .yt-lockup-metadata-view-model__title span {
+  -webkit-line-clamp: 2 !important;
+  display: -webkit-box !important;
+  -webkit-box-orient: vertical !important;
+  overflow: hidden !important;
+}
+
+/* Style metadata (channel name, views, time) */
+.yt-list-view-enabled yt-content-metadata-view-model {
+  font-size: 12px !important;
+}
+
+.yt-list-view-enabled .yt-content-metadata-view-model__metadata-text {
   font-size: 12px !important;
   color: #aaa !important;
 }
 
-/* Adjust spacing and layout for text content */
-.yt-list-view-enabled #details {
-  flex: 1 !important;
-  min-width: 0 !important;
+/* Keep menu button aligned */
+.yt-list-view-enabled .yt-lockup-metadata-view-model__menu-button {
+  flex-shrink: 0 !important;
+  margin-left: auto !important;
+}
+
+/* Remove extra margins from lockup wrapper */
+.yt-list-view-enabled .yt-lockup-view-model--rich-grid-legacy-margin {
+  margin: 0 !important;
+}
+
+/* Ensure proper metadata layout */
+.yt-list-view-enabled .yt-lockup-metadata-view-model {
+  flex-direction: row !important;
+}
+
+/* Hide shorts section in list view (optional) */
+.yt-list-view-enabled ytd-rich-section-renderer {
+  /* Uncomment to hide shorts: display: none !important; */
 }

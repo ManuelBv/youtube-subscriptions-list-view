@@ -3,7 +3,9 @@
     "allow": [
       "Bash(npm init -y)",
       "Bash(npm install:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(npm run build:*)"
     ]
   }
 }

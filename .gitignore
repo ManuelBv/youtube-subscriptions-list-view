@@ -3,9 +3,12 @@ node_modules/
 
 # Public folder for local testing (contains YouTube HTML/CSS)
 public/
+# Exception: allow test.html
+!public/test.html
+!public/README.md
 
-# Build output
-dist/
+# Build output (we want to track this for easy access to bookmarklet)
+# dist/ is now tracked
 
 # Environment variables
 .env

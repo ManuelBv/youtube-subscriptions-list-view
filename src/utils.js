@@ -55,8 +55,8 @@ function waitForElement(selector, timeout = 5000) {
  * Apply target="_blank" to video links
  */
 function applyTargetBlank(container) {
-  // TODO: Update selector based on actual YouTube DOM structure
-  const links = container.querySelectorAll('a#video-title-link, a.yt-simple-endpoint');
+  // Target video title links in the new YouTube structure
+  const links = container.querySelectorAll('a.yt-lockup-metadata-view-model__title, a.yt-lockup-view-model__content-image');
   links.forEach(link => {
     if (link.href && link.href.includes('/watch?v=')) {
       link.setAttribute('target', '_blank');

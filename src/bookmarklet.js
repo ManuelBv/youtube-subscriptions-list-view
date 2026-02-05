@@ -54,12 +54,11 @@
    */
   async function createToggleButton() {
     try {
-      // Wait for the channels link to appear
-      // TODO: Update selector based on actual YouTube DOM
-      const channelsLink = await waitForElement('a[href="/feed/channels"]');
+      // Wait for the "All subscriptions" button (channels link)
+      const channelsLink = await waitForElement('a[href="https://www.youtube.com/feed/channels"]');
 
       if (!channelsLink) {
-        console.error('Could not find channels link');
+        console.error('Could not find "All subscriptions" link');
         return;
       }
 
@@ -75,8 +74,15 @@
 
       toggleBtn.addEventListener('click', toggleListView);
 
-      // Insert button next to channels link
-      channelsLink.parentElement.insertAdjacentElement('afterend', toggleBtn);
+      // Insert button next to the "All subscriptions" button
+      // The link is inside a yt-button-shape, inside ytd-button-renderer, inside a div#subscribe-button
+      const subscribeButtonContainer = channelsLink.closest('#subscribe-button');
+      if (subscribeButtonContainer) {
+        subscribeButtonContainer.insertAdjacentElement('afterend', toggleBtn);
+      } else {
+        // Fallback: insert after the link's parent
+        channelsLink.parentElement.insertAdjacentElement('afterend', toggleBtn);
+      }
 
     } catch (error) {
       console.error('Failed to create toggle button:', error);
@@ -101,9 +107,8 @@
       }
     });
 
-    // Observe the main content container
-    // TODO: Update selector based on actual YouTube DOM
-    const contentContainer = document.querySelector('#contents.ytd-rich-grid-renderer');
+    // Observe the rich-grid-renderer content container
+    const contentContainer = document.querySelector('ytd-rich-grid-renderer #contents');
     if (contentContainer) {
       observer.observe(contentContainer, {
         childList: true,
