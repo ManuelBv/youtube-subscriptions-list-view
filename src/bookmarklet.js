@@ -55,7 +55,7 @@
   async function createToggleButton() {
     try {
       // Wait for the "All subscriptions" button (channels link)
-      const channelsLink = await waitForElement('a[href="https://www.youtube.com/feed/channels"]');
+      const channelsLink = await waitForElement('a[href="/feed/channels"]');
 
       if (!channelsLink) {
         console.error('Could not find "All subscriptions" link');
