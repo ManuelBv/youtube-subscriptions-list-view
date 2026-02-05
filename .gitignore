@@ -7,6 +7,9 @@ public/
 !public/test.html
 !public/README.md
 
+# Session archives
+archive/
+
 # Build output (we want to track this for easy access to bookmarklet)
 # dist/ is now tracked
 
