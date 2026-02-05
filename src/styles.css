@@ -1,0 +1,87 @@
+/* YouTube List View Styles */
+/* NOTE: Selectors will be updated after analyzing actual YouTube DOM structure */
+
+/* Toggle button styles */
+.yt-list-view-toggle {
+  margin-left: 16px;
+  padding: 8px 16px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.yt-list-view-toggle:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.yt-list-view-toggle.active {
+  background: #3ea6ff;
+  border-color: #3ea6ff;
+}
+
+/* List view layout - PLACEHOLDER SELECTORS */
+/* These will be updated after DOM analysis */
+
+.yt-list-view-enabled #contents.ytd-rich-grid-renderer {
+  /* Change grid to list layout */
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 8px !important;
+}
+
+.yt-list-view-enabled ytd-rich-item-renderer {
+  /* Make items full width, horizontal layout */
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+.yt-list-view-enabled ytd-rich-item-renderer #content {
+  /* Horizontal flex layout */
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px !important;
+  padding: 8px 0 !important;
+}
+
+/* Hide main thumbnail in list view */
+.yt-list-view-enabled ytd-thumbnail.ytd-rich-grid-media {
+  display: none !important;
+}
+
+/* Show and style avatar/channel thumbnail */
+.yt-list-view-enabled ytd-channel-name #avatar,
+.yt-list-view-enabled yt-img-shadow#avatar {
+  width: 48px !important;
+  height: 48px !important;
+  flex-shrink: 0 !important;
+}
+
+/* Style video title */
+.yt-list-view-enabled #video-title {
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  max-height: none !important;
+  -webkit-line-clamp: 2 !important;
+}
+
+/* Style metadata (channel name, views, date) */
+.yt-list-view-enabled #metadata-line {
+  font-size: 12px !important;
+  color: #aaa !important;
+}
+
+/* Adjust spacing and layout for text content */
+.yt-list-view-enabled #details {
+  flex: 1 !important;
+  min-width: 0 !important;
+}

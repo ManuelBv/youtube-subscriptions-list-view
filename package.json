@@ -1,0 +1,29 @@
+{
+  "name": "youtube-subscriptions-list-view",
+  "version": "1.0.0",
+  "description": "Bookmarklet to restore classic list view for YouTube subscriptions feed",
+  "main": "src/bookmarklet.js",
+  "scripts": {
+    "build": "node build.js",
+    "test": "echo \"Open public/index.html in browser and test bookmarklet\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ManuelBv/youtube-subscriptions-list-view.git"
+  },
+  "keywords": [
+    "youtube",
+    "bookmarklet",
+    "list-view",
+    "subscriptions"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ManuelBv/youtube-subscriptions-list-view/issues"
+  },
+  "homepage": "https://github.com/ManuelBv/youtube-subscriptions-list-view#readme",
+  "devDependencies": {
+    "terser": "^5.36.0"
+  }
+}
