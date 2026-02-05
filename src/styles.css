@@ -132,7 +132,91 @@
   flex-direction: row !important;
 }
 
-/* Hide shorts section in list view (optional) */
+/* ===== SHORTS SUPPORT ===== */
+
+/* Keep shorts section visible but style it for list view */
 .yt-list-view-enabled ytd-rich-section-renderer {
-  /* Uncomment to hide shorts: display: none !important; */
+  width: 100% !important;
 }
+
+/* Style the shorts shelf container */
+.yt-list-view-enabled ytd-rich-shelf-renderer[is-shorts] {
+  width: 100% !important;
+}
+
+/* Make shorts items container vertical instead of horizontal grid */
+.yt-list-view-enabled ytd-rich-shelf-renderer[is-shorts] #contents {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  transform: none !important;
+}
+
+/* Individual shorts item containers - full width rows */
+.yt-list-view-enabled ytd-rich-shelf-renderer[is-shorts] ytd-rich-item-renderer {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+}
+
+/* Shorts lockup models - horizontal layout */
+.yt-list-view-enabled ytm-shorts-lockup-view-model-v2,
+.yt-list-view-enabled ytm-shorts-lockup-view-model {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  gap: 12px !important;
+  width: 100% !important;
+}
+
+/* Shorts thumbnail container - constrain size */
+.yt-list-view-enabled ytm-shorts-lockup-view-model .shortsLockupViewModelHostThumbnailParentContainer {
+  width: 36px !important;
+  height: 48px !important;
+  min-width: 36px !important;
+  flex-shrink: 0 !important;
+}
+
+/* Shorts thumbnail image */
+.yt-list-view-enabled ytm-shorts-lockup-view-model yt-thumbnail-view-model {
+  width: 36px !important;
+  height: 48px !important;
+}
+
+.yt-list-view-enabled ytm-shorts-lockup-view-model yt-thumbnail-view-model img {
+  width: 36px !important;
+  height: 48px !important;
+  object-fit: cover !important;
+}
+
+/* Shorts metadata container */
+.yt-list-view-enabled ytm-shorts-lockup-view-model .shortsLockupViewModelHostOutsideMetadata {
+  flex: 1 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 12px 0 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* Shorts title and views */
+.yt-list-view-enabled ytm-shorts-lockup-view-model .shortsLockupViewModelHostMetadataTitle {
+  font-size: 14px !important;
+  line-height: 1.4 !important;
+  margin-bottom: 2px !important;
+}
+
+.yt-list-view-enabled ytm-shorts-lockup-view-model .shortsLockupViewModelHostOutsideMetadataSubhead {
+  font-size: 12px !important;
+  color: #aaa !important;
+}
+
+/* Shorts menu button */
+.yt-list-view-enabled ytm-shorts-lockup-view-model .shortsLockupViewModelHostOutsideMetadataMenu {
+  flex-shrink: 0 !important;
+  margin-left: 12px !important;
+}
+
+/* To hide shorts completely, uncomment this: */
+/* .yt-list-view-enabled ytd-rich-section-renderer { display: none !important; } */
